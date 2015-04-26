@@ -1,0 +1,67 @@
+---
+######
+## Configures all chef-solo requirements on the target
+######
+
+###
+# Clean target environment from old chef materials
+- include: destroy_chef_solo_materials.yml
+  chef_solo_destroy_materials: true
+
+
+###
+# Necessary structure and files
+
+- name: Create directory chef-solo
+  file:
+    path: "{{ chef_solo_runner_solo_path }}"
+    state: directory
+
+- name: Generate solo.rb
+  template:
+    src: "solo.rb.j2"
+    dest: "{{ chef_solo_runner_solo_path }}/solo.rb"
+    force: yes
+
+- name: Copying node.json
+  copy:
+    src: "{{ chef_solo_runner_node_json_file }}"
+    dest: "{{ chef_solo_runner_solo_path }}"
+    force: yes
+
+- name: Unarchive cookbooks archive
+  unarchive:
+    copy: yes
+    src: "./cookbooks.tar.gz"
+    dest: "{{ chef_solo_runner_solo_path }}"
+
+###
+# Optional files
+
+- name: Copying environments
+  copy:
+    src: "{{ chef_solo_runnerenvironments_dir }}"
+    dest: "{{ chef_solo_runner_solo_path }}"
+    force: yes
+  when: chef_solo_runner_environments_dir != ""
+
+- name: Copying roles
+  copy:
+    src: "{{ chef_solo_runner_encrypted_data_bag_secret_file }}"
+    dest: "{{ chef_solo_runner_solo_path }}"
+    force: yes
+  when: chef_solo_runner_roles_dir != ""
+
+- name: Copying encrypted_data_bag_key
+  copy:
+    src: "{{ chef_encrypted_data_bag_secret_file }}"
+    dest: "{{ chef_solo_runner_solo_path }}"
+    force: yes
+  when: chef_solo_runner_encrypted_data_bag_secret_file != ""
+
+- name: Copying data bags
+  copy:
+    src: "{{ chef_solo_runner_data_bags_dir }}"
+    dest: "{{ chef_solo_runner_solo_path }}"
+    force: yes
+  when: chef_solo_runner_data_bags_dir != ""

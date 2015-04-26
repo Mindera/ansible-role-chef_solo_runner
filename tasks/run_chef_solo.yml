@@ -1,0 +1,20 @@
+---
+
+- name: Run chef-solo without environments
+  shell: >
+        sudo chef-solo
+        -c "{{ chef_solo_runner_solo_path }}/solo.rb"
+        -j "{{ chef_solo_runner_solo_path }}/node.json"
+        --logfile "{{ chef_solo_runner_solo_log }}"
+        -l "{{ chef_solo_runner_solo_log_level }}"
+  when: chef_solo_runner_environment == ""
+
+- name: Run chef-solo with specific environment
+  shell: >
+        sudo chef-solo
+        -c "{{ chef_solo_runner_solo_path }}/solo.rb"
+        -j "{{ chef_solo_runner_solo_path }}/node.json"
+        -E "{{ chef_solo_runner_environment }}"
+        --logfile "{{ chef_solo_runner_solo_log }}"
+        -l "{{ chef_solo_runner_solo_log_level }}"
+  when: chef_solo_runner_environment != ""

@@ -1,0 +1,11 @@
+---
+
+- name: "Fail when variables are not defined, or invalid (empty, None)."
+  fail:
+    msg: "'{{ item.name }}' variable have an invalid value ('{{ item.value }}') or is not defined"
+  when: item.value == "" or item.value == None or item.value == []
+  with_items:
+    - name: "chef_solo_runner_cookbook_archive_file"
+      value: "{{ chef_solo_runner_cookbook_archive_file|default('') }}"
+    - name: "chef_solo_runner_node_json_file"
+      value: "{{ chef_solo_runner_node_json_file|default('') }}"

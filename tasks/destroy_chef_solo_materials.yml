@@ -1,0 +1,7 @@
+---
+
+- name: Destroy chef-solo tmp files
+  file:
+    path: "{{ chef_solo_runner_solo_path }}"
+    state: absent
+  when: chef_solo_runner_destroy_solo_materials|bool

@@ -1,0 +1,26 @@
+---
+
+###
+# Mandatory local variables
+chef_solo_runner_cookbook_archive_file: ""
+chef_solo_runner_node_json_file: ""
+
+
+###
+# Optional local variables
+chef_solo_runner_environment: ""
+chef_solo_runner_environments_dir: ""
+chef_solo_runner_data_bags_dir: ""
+chef_solo_runner_roles_dir: ""
+chef_solo_runner_encrypted_data_bag_secret_file: ""
+
+
+###
+# Mandatory target Chef-solo variables
+chef_solo_runner_solo_path: "/var/tmp/chef-solo"
+chef_solo_runner_solo_log: "/var/log/chef-solo.log"
+chef_solo_runner_solo_log_level: "info"
+
+###
+# Optional target Chef-solo variables
+chef_solo_runner_destroy_solo_materials: false

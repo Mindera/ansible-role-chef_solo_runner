@@ -1,0 +1,9 @@
+---
+
+- include: check_requirements.yml
+
+- include: prepare_chef_solo_materials.yml
+
+- include: run_chef_solo.yml
+
+- include: destroy_chef_solo_materials.yml

@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: João Cravo
+  description: Runs chef-solo giving the cookbooks archive, the json attributes (usually called node.json) file
+               and optionaly the location of databags, environments and roles.
+  company: Mindera
+  license: MIT
+  min_ansible_version: 1.9.0
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  categories:
+    - system
+    - packaging
