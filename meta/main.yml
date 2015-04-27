@@ -13,4 +13,5 @@ galaxy_info:
   categories:
     - system
     - packaging
-  dependencies: []
+
+dependencies: []
