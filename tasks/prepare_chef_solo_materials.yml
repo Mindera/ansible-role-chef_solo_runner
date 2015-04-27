@@ -6,7 +6,7 @@
 ###
 # Clean target environment from old chef materials
 - include: destroy_chef_solo_materials.yml
-  chef_solo_destroy_materials: true
+  chef_solo_runner_destroy_solo_materials: true
 
 
 ###
@@ -32,7 +32,7 @@
 - name: Unarchive cookbooks archive
   unarchive:
     copy: yes
-    src: "./cookbooks.tar.gz"
+    src: "{{ chef_solo_runner_cookbook_archive_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
 
 ###
