@@ -7,9 +7,10 @@ galaxy_info:
   license: MIT
   min_ansible_version: 1.9.0
   platforms:
-  - name: EL
-    versions:
-    - 6
+    - name: EL
+      versions:
+        - 6
   categories:
     - system
     - packaging
+  dependencies: []
