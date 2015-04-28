@@ -54,7 +54,7 @@
 
 - name: Copying encrypted_data_bag_key
   copy:
-    src: "{{ chef_encrypted_data_bag_secret_file }}"
+    src: "{{ chef_solo_runner_encrypted_data_bag_secret_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
   when: chef_solo_runner_encrypted_data_bag_secret_file != ""
