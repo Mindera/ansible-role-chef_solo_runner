@@ -1,11 +1,11 @@
 Ansible Role: Chef Solo runner
 =========
 
-Runs chef-solo giving the cookbooks archive, the json attributes (usually called node.json) file 
+Runs chef-solo giving the cookbooks archive, the json attributes file (usually called node.json)
 and optionaly the location of databags, environments and roles.
 
-Giving a Chef run list, roles, environments and attributes, this role runs Chef Solo in the targets machines.
-It packages all the dependencies cookbooks using berkshelf, copy them to the target, unpack them, and run chef-solo.
+It copies all the needed chef materials to a location on the target machine ('/var/tmp/chef-solo' by default) and then
+executes chef-solo. Chef logs are dumped in '/var/log/chef-solo.log' by default.
 
 Requirements
 ------------
