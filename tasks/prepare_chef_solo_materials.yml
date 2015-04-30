@@ -1,6 +1,6 @@
 ---
 ######
-## Configures all chef-solo requirements on the target
+## Create all chef-solo required materials on the target
 ######
 
 ###

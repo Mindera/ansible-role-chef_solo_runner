@@ -1,4 +1,7 @@
 ---
+######
+## Runs chef-solo
+######
 
 - name: Run chef-solo without environments
   shell: >

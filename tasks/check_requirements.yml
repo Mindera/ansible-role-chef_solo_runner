@@ -1,4 +1,7 @@
 ---
+######
+## Verifies if mandatory variables are well defined
+######
 
 - name: "Fail when variables are not defined, or invalid (empty, None)."
   fail:

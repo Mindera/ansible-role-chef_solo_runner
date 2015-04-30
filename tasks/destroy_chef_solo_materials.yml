@@ -1,4 +1,7 @@
 ---
+######
+## Destroys chef solo materials
+######
 
 - name: Destroy chef-solo tmp files
   file:
