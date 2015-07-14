@@ -8,7 +8,6 @@
 - include: destroy_chef_solo_materials.yml
   chef_solo_runner_destroy_solo_materials: true
 
-
 ###
 # Necessary structure and files
 
@@ -33,19 +32,35 @@
     directory_mode: '0777'
     force: yes
 
-- name: Unarchive cookbooks archive
-  unarchive:
-    copy: yes
+- name: Copying cookbooks archive
+  copy:
     src: "{{ chef_solo_runner_cookbook_archive_file }}"
-    dest: "{{ chef_solo_runner_solo_path }}"
+    dest: "{{ chef_solo_runner_solo_path }}/cookbooks.tar.gz"
+    mode: '0666'
+    force: yes
+
+- name: Untar cookbooks archive
+  shell: |
+      tar -C "{{ chef_solo_runner_solo_path }}" \
+        --no-same-permissions \
+        --no-overwrite-dir \
+        --no-same-owner \
+        -xzm \
+        -f "{{ chef_solo_runner_solo_path }}/cookbooks.tar.gz"
+
+- name: Change permissions to unpackaged cookbooks tree
+  file:
+    path: "{{ chef_solo_runner_solo_path }}/cookbooks"
     mode: '0777'
+    recurse: true
+    state: directory
 
 ###
 # Optional files
 
 - name: Copying environments
   copy:
-    src: "{{ chef_solo_runnerenvironments_dir }}"
+    src: "{{ chef_solo_runner_environments_dir }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
     mode: '0666'
