@@ -3,7 +3,7 @@ Ansible Role: Chef Solo runner
 
 [![Ansible-Galaxy][ansible-image]][ansible-link]
 
-[ansible-image]: https://img.shields.io/badge/ansible--galaxy-1.1.0-brightgreen.svg
+[ansible-image]: https://img.shields.io/badge/ansible--galaxy-1.1.1-brightgreen.svg
 [ansible-link]: https://galaxy.ansible.com/list#/roles/3573
 
 Runs chef-solo giving the cookbooks archive, the json attributes file (usually called node.json)

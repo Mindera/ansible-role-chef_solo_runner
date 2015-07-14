@@ -15,8 +15,6 @@
 - name: Create directory chef-solo
   file:
     path: "{{ chef_solo_runner_solo_path }}"
-    owner: 'root'
-    group: 'root'
     mode: '0777'
     state: directory
 
@@ -24,8 +22,6 @@
   template:
     src: "solo.rb.j2"
     dest: "{{ chef_solo_runner_solo_path }}/solo.rb"
-    owner: 'root'
-    group: 'root'
     mode: '0666'
     force: yes
 
@@ -33,8 +29,6 @@
   copy:
     src: "{{ chef_solo_runner_node_json_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
-    owner: 'root'
-    group: 'root'
     mode: '0666'
     directory_mode: '0777'
     force: yes
@@ -44,8 +38,6 @@
     copy: yes
     src: "{{ chef_solo_runner_cookbook_archive_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
-    owner: 'root'
-    group: 'root'
     mode: '0777'
 
 ###
@@ -56,8 +48,6 @@
     src: "{{ chef_solo_runnerenvironments_dir }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
-    owner: 'root'
-    group: 'root'
     mode: '0666'
     directory_mode: '0777'
   when: chef_solo_runner_environments_dir != ""
@@ -67,8 +57,6 @@
     src: "{{ chef_solo_runner_encrypted_data_bag_secret_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
-    owner: 'root'
-    group: 'root'
     mode: '0666'
     directory_mode: '0777'
   when: chef_solo_runner_roles_dir != ""
@@ -78,8 +66,6 @@
     src: "{{ chef_solo_runner_encrypted_data_bag_secret_file }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
-    owner: 'root'
-    group: 'root'
     mode: '0666'
   when: chef_solo_runner_encrypted_data_bag_secret_file != ""
 
@@ -88,8 +74,6 @@
     src: "{{ chef_solo_runner_data_bags_dir }}"
     dest: "{{ chef_solo_runner_solo_path }}"
     force: yes
-    owner: 'root'
-    group: 'root'
     mode: '0666'
     directory_mode: '0777'
   when: chef_solo_runner_data_bags_dir != ""
