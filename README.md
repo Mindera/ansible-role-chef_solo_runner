@@ -1,8 +1,10 @@
 Ansible Role: Chef Solo runner
 =========
 
-.. image:: https://img.shields.io/badge/ansible--galaxy-1.1.0-brightgreen.svg
-    :target: https://galaxy.ansible.com/list#/roles/3573
+[![Ansible-Galaxy][ansible-image]][ansible-link]
+
+[ansible-image]: https://img.shields.io/badge/ansible--galaxy-1.1.0-brightgreen.svg
+[ansible-link]: https://galaxy.ansible.com/list#/roles/3573
 
 Runs chef-solo giving the cookbooks archive, the json attributes file (usually called node.json)
 and optionaly the location of databags, environments and roles.
@@ -38,11 +40,13 @@ None.
 Example Playbook
 ----------------
 
-    - hosts: servers
-      roles:
-         - role: chef_solo_runner
-           chef_solo_runner_cookbook_archive_file: "cookbooks.tar.gz"
-           chef_solo_runner_node_json_file: "node.json"
+```yaml
+- hosts: servers
+  roles:
+     - role: chef_solo_runner
+       chef_solo_runner_cookbook_archive_file: "cookbooks.tar.gz"
+       chef_solo_runner_node_json_file: "node.json"
+```
 
 License
 -------
