@@ -4,5 +4,5 @@
 ######
 
 - name: Destroy chef-solo tmp files
-  shell: "rm -r {{ chef_solo_runner_solo_path }}/*"
+  shell: "rm -rf {{ chef_solo_runner_solo_path }}/*"
   when: chef_solo_runner_destroy_solo_materials|bool
