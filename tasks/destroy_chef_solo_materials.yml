@@ -5,6 +5,7 @@
 
 - name: Destroy chef-solo tmp files
   file:
-    state: abstent
-    path: "{{ chef_solo_runner_solo_path }}"
+    state: absent
+    force: yes
+    path: "{{ chef_solo_runner_solo_path }}/*"
   when: chef_solo_runner_destroy_solo_materials|bool
